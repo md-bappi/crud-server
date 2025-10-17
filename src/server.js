@@ -1,4 +1,5 @@
-const exress = require("express");
+const express = require("express");
+const path = require("path");
 const { PORT } = require("./secret");
 const connectDB = require("./config/db");
 const cors = require("cors");
@@ -7,11 +8,12 @@ const { errorResponse } = require("./controllers/responseControllers");
 const createError = require("http-errors");
 const imageRoute = require("./routes/imageRoutes");
 
-const app = exress();
+const app = express();
 
 app.use(cors());
-app.use(exress.json());
-app.use(exress.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 app.use("/api/products", productRoute);
 app.use("/api/images", imageRoute);

@@ -2,19 +2,15 @@ const mongooese = require("mongoose");
 
 const imageSchema = new mongooese.Schema(
   {
-    url: {
+    path: {
       type: String,
       required: true,
       trim: true,
     },
-    title: {
+    filename: {
       type: String,
       required: true,
       trim: true,
-    },
-    description: {
-      type: String,
-      required: false,
     },
   },
   { timestamps: true }
